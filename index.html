@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game Zone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <a class="logo" href="#home">GAME<span>ZONE</span></a>
+    <nav class="navlinks" aria-label="Main">
+      <button type="button" class="navbtn" data-go="home">Home</button>
+      <button type="button" class="navbtn" data-go="leaderboard">Leaderboard</button>
+      <button type="button" class="navbtn" id="soundBtn" aria-pressed="true">Sound: On</button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HOME -->
+    <section id="view-home" class="view">
+      <div class="hero">
+        <p class="eyebrow">College Game Zone</p>
+        <h1>Nine games.<br>Three categories.<br><em>One leaderboard.</em></h1>
+        <p class="lede">Pick a category, choose Easy, Medium or Hard, and chase the top score.</p>
+        <label class="namefield" for="playerName">
+          <span>Your name</span>
+          <input id="playerName" type="text" maxlength="16" placeholder="Enter your name" autocomplete="off">
+        </label>
+      </div>
+
+      <div class="cats" id="cats"></div>
+
+      <div class="topstrip">
+        <h2>Top scores right now</h2>
+        <ol id="topScores" class="toplist"></ol>
+      </div>
+    </section>
+
+    <!-- CATEGORY -->
+    <section id="view-category" class="view" hidden>
+      <button type="button" class="btn ghost small" data-go="home">&larr; Home</button>
+      <div class="cathead" id="catHead"></div>
+      <div class="gamecards" id="gameCards"></div>
+    </section>
+
+    <!-- GAME -->
+    <section id="view-game" class="view" hidden>
+      <button type="button" class="btn ghost small" id="gameBack">&larr; Back</button>
+      <div class="gamehead">
+        <p class="eyebrow" id="gCat"></p>
+        <h2 id="gTitle"></h2>
+        <p class="how" id="gHow"></p>
+      </div>
+
+      <div class="hud" aria-live="off">
+        <div class="stat"><span>Score</span><b id="hScore">0</b></div>
+        <div class="stat"><span>Timer</span><b id="hTime">--</b></div>
+        <div class="stat"><span>Best</span><b id="hBest">0</b></div>
+        <div class="stat"><span>Level</span><b id="hDiff">Medium</b></div>
+      </div>
+
+      <div class="setup" id="setup">
+        <p class="setuplabel">Choose difficulty</p>
+        <div class="seg" id="diffSeg" role="group" aria-label="Difficulty">
+          <button type="button" data-d="easy">Easy</button>
+          <button type="button" data-d="medium">Medium</button>
+          <button type="button" data-d="hard">Hard</button>
+        </div>
+        <p class="levelinfo" id="levelInfo"></p>
+        <p class="multinfo" id="multInfo"></p>
+        <button type="button" class="btn big" id="startBtn">Start Game</button>
+      </div>
+
+      <div class="runbar" id="runbar" hidden>
+        <button type="button" class="btn ghost small" id="endBtn">End Game &amp; Save Score</button>
+      </div>
+      <div class="stage" id="stage" hidden></div>
+    </section>
+
+    <!-- LEADERBOARD -->
+    <section id="view-leaderboard" class="view" hidden>
+      <div class="cathead">
+        <p class="eyebrow">Hall of fame</p>
+        <h2>Leaderboard</h2>
+        <p class="lede">Highest scores saved in this browser. Final score = raw score &times; level multiplier.</p>
+      </div>
+      <div class="lbtools">
+        <label for="lbFilter">Game</label>
+        <select id="lbFilter"></select>
+        <button type="button" class="btn ghost small" id="lbClear">Clear scores</button>
+      </div>
+      <div class="tablewrap">
+        <table class="lb">
+          <thead><tr><th>#</th><th>Player</th><th>Game</th><th>Level</th><th>Score</th><th>Date</th></tr></thead>
+          <tbody id="lbBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">Game Zone &middot; Built with HTML, CSS and JavaScript</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
